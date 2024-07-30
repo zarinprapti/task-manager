@@ -12,6 +12,7 @@
 
     <p>My task manager</p>
     <input type="text" class="input__task">
+    <input type="date" class="date__picker">
     <button class="btn" onclick="addTask()"> ADD </button>
     <div class="task__container"></div>
     <script>
@@ -33,7 +34,11 @@
             let inputTask = document.querySelector('.input__task');
             let newTask = inputTask.value;
             inputTask.value = '';
-            tasks.push(newTask);
+
+            let datePicker = document.querySelector('.date__picker');
+            let dueDate = datePicker.value;
+            datePicker.value = '';
+            tasks.push(newTask + ' ' + dueDate);
             renderTasks();
 
         }
