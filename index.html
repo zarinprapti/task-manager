@@ -12,19 +12,29 @@
 
     <p>My task manager</p>
     <input type="text" class="input__task">
-
-    <button class="btn"> ADD </button>
-
+    <button class="btn" onclick="addTask()"> ADD </button>
+    <div class="task__container"></div>
     <script>
-        function addTask() {
-            let inputTask = document.querySelector('.input__task')
-            let inputDate = document.querySelector('.task__date')
-            let inputTaskElement = inputTask.value
-            let inputDateElement = inputDate.value
-            console.log(inputTaskElement)
-            console.log(inputDateElement)
-            inputTask.value = ' '
+        let tasks = [];
+        renderTasks();
 
+        function renderTasks() {
+            tasks.forEach(function(taskTitle) {
+                let taskList = document.querySelector('.task__container')
+                let element = document.createElement('div');
+                element.innerText = taskTitle;
+                taskList.appendChild(element)
+            })
+
+        }
+
+        function addTask() {
+            document.querySelector('.task__container').innerHTML = '';
+            let inputTask = document.querySelector('.input__task');
+            let newTask = inputTask.value;
+            inputTask.value = '';
+            tasks.push(newTask);
+            renderTasks();
 
         }
     </script>
