@@ -16,30 +16,37 @@
     <button class="btn" onclick="addTask()"> ADD </button>
     <div class="task__container"></div>
     <script>
-        let tasks = [];
-        renderTasks();
-
-        function renderTasks() {
-            tasks.forEach(function(taskTitle) {
-                let taskList = document.querySelector('.task__container')
-                let element = document.createElement('div');
-                element.innerText = taskTitle;
-                taskList.appendChild(element)
-            })
-
-        }
+        let tasks = [{
+            title: '',
+            dueDate: ''
+        }];
 
         function addTask() {
             document.querySelector('.task__container').innerHTML = '';
             let inputTask = document.querySelector('.input__task');
             let newTask = inputTask.value;
             inputTask.value = '';
-
+            //for adding date
             let datePicker = document.querySelector('.date__picker');
-            let dueDate = datePicker.value;
+            let datePicked = datePicker.value;
             datePicker.value = '';
-            tasks.push(newTask + ' ' + dueDate);
+            tasks.push({
+                    title: newTask,
+                    dueDate: datePicked
+                }
+
+            );
             renderTasks();
+
+        }
+
+        function renderTasks() {
+            tasks.forEach(function(task) {
+                let taskList = document.querySelector('.task__container')
+                let element = document.createElement('div');
+                element.innerText = task.title + ' ' + task.dueDate;
+                taskList.appendChild(element)
+            })
 
         }
     </script>
