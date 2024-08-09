@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="addDate()">Show Today's Date</button>
+    <button onclick="addTime()">Show Today's Time</button>
+    <div class="date__picker"></div>
+
+    <script>
+        function addDate() {
+
+            const date = new Date();
+
+            let element = document.createElement('p');
+            element.innerText = `Today's date is: ${date}`;
+            let datePicker = document.querySelector('.date__picker');
+            datePicker.appendChild(element);
+
+        }
+
+        function addTime() {
+
+            const time = new Date().getTime();
+
+
+
+            let timeElement = document.createElement('p');
+            timeElement.innerText = `Time is: ${time}`;
+            let timePicker = document.querySelector('.date__picker');
+            timePicker.appendChild(timeElement);
+
+        }
+    </script>
+</body>
+
+</html>
